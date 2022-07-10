@@ -205,6 +205,7 @@
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="NavTitle" destination="xS4-dF-x9X" id="wdm-gg-HT6"/>
                         <outlet property="ShopTable" destination="d33-IJ-jfu" id="JKS-se-Q4p"/>
                     </connections>
                 </viewController>

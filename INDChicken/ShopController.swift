@@ -13,6 +13,7 @@ public var menuPrices:[Int] = []
 public var menuAmounts:[Int] = []
 
 class ShopController: UIViewController {
+    @IBOutlet weak var NavTitle: UINavigationItem!
     @IBOutlet weak var ShopTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,6 @@ extension ShopController: UITableViewDataSource, UITableViewDelegate {
         menuNames = []
         menuPrices = []
         menuAmounts = []
-        
         for i in 0..<5 {
             if shop[i] != 0 {
                 menuPhotos.append(photo[i])
@@ -36,6 +36,7 @@ extension ShopController: UITableViewDataSource, UITableViewDelegate {
                 menuAmounts.append(shop[i])
             }
         }
+        NavTitle.title = "장바구니 (\(formatter(number: menuPrices.reduce(0, +)))원)"
         return menuAmounts.count
     }
     
@@ -46,5 +47,17 @@ extension ShopController: UITableViewDataSource, UITableViewDelegate {
         scell.ShopPhoto.image = UIImage(named: menuPhotos[indexPath.row])
         scell.ShopAmount.text = formatter(number: menuAmounts[indexPath.row]) + "개"
         return scell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+                shop[name.firstIndex(of: menuNames[indexPath.row])!] -= 1
+                if shop[name.firstIndex(of: menuNames[indexPath.row])!] == 0 {
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                } else {
+                    tableView.reloadData()
+                }
+            } else if editingStyle == .insert {
+        }
     }
 }
