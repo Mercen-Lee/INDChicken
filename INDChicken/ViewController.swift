@@ -7,12 +7,19 @@
 
 import UIKit
 
+public var shop:[Int] = [0, 0, 0, 0, 0]
+public let photo:[String] = ["Fried", "Hot", "Soysause", "Fries", "Cheeseball"]
+public let name:[String] = ["후라이드 치킨", "양념 치킨", "간장 치킨", "감자 튀김", "치즈볼"]
+public let price:[Int] = [16000, 17000, 17000, 4000, 3000]
+
+func formatter(number: Int) -> String {
+    let numberFormatter = NumberFormatter()
+    numberFormatter.numberStyle = .decimal
+    return numberFormatter.string(from: NSNumber(value: number))!
+}
+
 class ViewController: UIViewController {
     @IBOutlet weak var MenuTable: UITableView!
-    let photo:[String] = ["Fried", "Hot", "Soysause", "Fries", "Cheeseball"]
-    let name:[String] = ["후라이드 치킨", "양념 치킨", "간장 치킨", "감자 튀김", "치즈볼"]
-    let price:[Int] = [16000, 17000, 17000, 4000, 3000]
-    public var shop:[Int] = [0, 0, 0, 0, 0]
     override func viewDidLoad() {
         super.viewDidLoad()
         MenuTable.delegate = self
@@ -22,12 +29,6 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func formatter(number: Int) -> String {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        return numberFormatter.string(from: NSNumber(value: number))!
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5;
