@@ -1,16 +1,14 @@
-//
-//  MenuCell.swift
-//  INDChicken
-//
-//  Created by Mercen on 2022/07/10.
-//
+// MenuCell.swift
+// 메뉴판 TableView Cell
 
 import UIKit
 
 class MenuCell: UITableViewCell {
-    @IBOutlet weak var Photo: UIImageView!
-    @IBOutlet weak var Name: UILabel!
-    @IBOutlet weak var Price: UILabel!
+    
+    // Table Cell의 내용
+    @IBOutlet weak var Photo: UIImageView! // 사진
+    @IBOutlet weak var Name: UILabel! // 메뉴명
+    @IBOutlet weak var Price: UILabel! // 메뉴 가격
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
